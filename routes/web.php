@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'shortener.index', 'uses' => 'ShortenerController@short']);
+Route::get('/{url}', ['as' => 'shortener.url', 'uses' => 'ShortenerController@redirect']);
