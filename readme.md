@@ -21,7 +21,7 @@ https://mysite.com/?short=https://www.google.com.br
 
 ## And how to install this wonderfull shortener?
 
-In order to install a URL Shortener, which is a Laravel 5.3 project, you will need the following programs in your system:
+In order to install URL Shortener, which is a Laravel 5.3 project, you will need the following programs in your system:
 * [Composer](https://getcomposer.org/)
 * [NodeJS](https://nodejs.org/)
 * [Yarn](https://yarnpkg.com/)
