@@ -5,7 +5,8 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
-    "bulma": "^0.2.3",
+    "bulma": "0.2.3",
+    "font-awesome": "4.7.0",
     "gulp": "3.9.1",
     "jquery": "3.1.1",
     "laravel-elixir": "6.0.0-11"

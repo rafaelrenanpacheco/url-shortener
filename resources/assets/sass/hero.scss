@@ -1,0 +1,25 @@
+$hero-foot-color: #afd7c0;
+$hero-foot-background: #00844b;
+$nav-box-shadow: rgba(10, 10, 10, .3);
+$nav-background: #008049;
+
+.hero {
+  &.is-success {
+    .nav {
+      background: $nav-background;
+      box-shadow: 0 2px 3px $nav-box-shadow;
+    }
+
+    .nav-center {
+      font-weight: 700;
+    }
+  }
+
+  .hero-foot {
+    background: $hero-foot-background;
+    color: $hero-foot-color;
+    padding: 5px 0;
+
+    strong { color: $hero-foot-color; }
+  }
+}

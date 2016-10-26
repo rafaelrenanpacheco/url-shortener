@@ -1,1 +1,10 @@
+$green: #008c50;
+$turquoise: #00663b;
+
 @import 'node_modules/bulma/bulma';
+
+@import 'node_modules/font-awesome/css/font-awesome';
+
+@import 'base';
+@import 'hero';
+@import 'message';

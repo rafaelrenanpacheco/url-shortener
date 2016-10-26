@@ -1,6 +1,6 @@
-const elixir = require('laravel-elixir');
-
-require('laravel-elixir-vue-2');
+const elixir = require("laravel-elixir");
+const glob = require("glob");
+const fs = require("fs");
 
 /*
  |--------------------------------------------------------------------------
@@ -13,7 +13,25 @@ require('laravel-elixir-vue-2');
  |
  */
 
+elixir.config.css.minifier.pluginOptions = {
+    keepSpecialComments: 0,
+};
+
+glob("public/**/*.+(css|js|map)", {}, function(er, files) {
+    if (er) {
+        console.log(er);
+    } else {
+        files.forEach(function(file) {
+            fs.unlinkSync(file);
+        });
+    }
+});
+
+/* eslint strict: 0 */
 elixir(mix => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+    mix.sass(["app.scss"], "public/css/all.css");
+
+    if (elixir.config.production) {
+        mix.version(["css/all.css"], "public");
+    }
 });

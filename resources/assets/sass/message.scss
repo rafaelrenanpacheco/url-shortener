@@ -1,0 +1,10 @@
+.message,
+.message-header {
+  border-radius: 0;
+}
+
+.message-header {
+  + .message-body {
+    border-radius: 0;
+  }
+}

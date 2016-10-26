@@ -10,35 +10,13 @@ use Validator;
 
 class ShortenerController extends Controller
 {
-    public function short(Request $request)
+    public function index(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'short' => 'active_url',
-        ]);
-
-        if ($validator->fails()) {
-            return $validator->errors();
-        }
-
         if ($request->has('short')) {
-            $url = $request->input('short');
-
-            $shortener = Shortener::where('url', $url)->first();
-
-            if ($shortener) {
-                $shortener->touch();
-            } else {
-                $shortener = new Shortener;
-                $shortener->url = $url;
-                $shortener->save();
-            }
-
-            $hashids = new Hashids(config('app.key'));
-
-            return url($hashids->encode($shortener->id));
+            return $this->encode($request);
+        } else {
+            return view('index');
         }
-
-        return '';
     }
 
     public function redirect($url)
@@ -58,5 +36,48 @@ class ShortenerController extends Controller
         } else {
             return '';
         }
+    }
+
+    public function generate(Request $request)
+    {
+        $encoded = $this->encode($request);
+
+        if (is_string($encoded)) {
+            return redirect()->route('shortener.index')
+                             ->with('shortened_url', $encoded);
+        } else {
+            return redirect()->route('shortener.index')
+                             ->withErrors($encoded);
+        }
+    }
+
+    private function encode(Request $request)
+    {
+        $validator = Validator::make(
+            $request->all(),
+            ['short' => 'required|active_url'],
+            [],
+            ['short' => 'input']
+        );
+
+        if ($validator->fails()) {
+            return $validator->errors();
+        }
+
+        $url = $request->input('short');
+
+        $shortener = Shortener::where('url', $url)->first();
+
+        if ($shortener) {
+            $shortener->touch();
+        } else {
+            $shortener = new Shortener;
+            $shortener->url = $url;
+            $shortener->save();
+        }
+
+        $hashids = new Hashids(config('app.key'));
+
+        return url($hashids->encode($shortener->id));
     }
 }
