@@ -52,7 +52,7 @@
                         <form action="{{ route('shortener.generate') }}" method="post">
                             {{ csrf_field() }}
                             <p class="control has-icon has-addons">
-                                <input class="input is-large is-expanded" type="text" name="short" id="short" placeholder="https://www.someurl.com">
+                                <input class="input is-large is-expanded" type="text" name="short" id="short" maxlength="255" placeholder="https://www.someurl.com">
                                 <i class="fa fa-link"></i>
                                 <button type="submit" class="button is-primary is-large">
                                     Generate

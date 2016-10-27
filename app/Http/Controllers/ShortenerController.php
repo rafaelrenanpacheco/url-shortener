@@ -55,7 +55,7 @@ class ShortenerController extends Controller
     {
         $validator = Validator::make(
             $request->all(),
-            ['short' => 'required|active_url'],
+            ['short' => 'required|active_url|max:255'],
             [],
             ['short' => 'input']
         );
