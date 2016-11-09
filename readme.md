@@ -4,7 +4,7 @@ URL Shortener is a PHP Laravel project to shorten your own URLs. For example, if
 
 ## What kind of encoding is that?
 
-There are many shorteners out there that reinvent the wheel, by coding their own encode/decode logic. URL Shortener on the other hand uses the amazing [hashids.php](https://github.com/ivanakimov/hashids.php) project that does the encode/decode job very well. The main feature is the ability to generate different identifications for the same ID in different projects. Let's say for example that you have two domains, and you use them to short the same URL for the first time. In both databases the URL will receive an internal identification of 1 (one), but the encoded identification will be different for each domain. It may be something like `mysite/Gh` and `myothersite/tw`. Who knows.
+There are many shorteners out there that reinvent the wheel, by coding their own encode/decode logic. URL Shortener on the other hand uses the amazing [hashids.php](https://github.com/ivanakimov/hashids.php) project that does the encode/decode job very well. The main feature is the ability to generate different identifications for the same ID in different projects. Let's say for example that you have two domains, and you use them to shorten the same URL for the first time. In both databases the URL will receive an internal identification of 1 (one), but the encoded identification will be different for each domain. It may be something like `mysite/Gh` and `myothersite/tw`. Who knows.
 
 ## That was amazing, but how do I use it?
 
@@ -12,10 +12,10 @@ There are two ways to use URL Shortener:
 
 **Directly from your domain as a HTTP GET request:**
 ```
-https://mysite.com/?short=https://www.google.com.br
+https://mysite.com/shorten?url=https://www.google.com.br
 ```
 
-**Or using the URL Shortener home page:**
+**Or using the URL Shortener /shorten page:**
 
 !["URL Shortener"] (https://cloud.githubusercontent.com/assets/12160864/19749104/072d5f96-9bc5-11e6-8922-23bbc7052db5.png "URL Shortener")
 
