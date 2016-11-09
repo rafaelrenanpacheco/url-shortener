@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', ['as' => 'shortener.index', 'uses' => 'ShortenerController@index']);
-Route::get('/{url}', ['as' => 'shortener.url', 'uses' => 'ShortenerController@redirect']);
-Route::post('/', ['as' => 'shortener.generate', 'uses' => 'ShortenerController@generate']);
+Route::group(['prefix' => 'shorten'], function () {
+    Route::get('/', 'ShortenerController@index')->name('shortener.index');
+    Route::post('/', 'ShortenerController@generate')->name('shortener.generate');
+});
+
+Route::get('/', 'ShortenerController@example')->name('shortener.example');
+Route::get('/{url}', 'ShortenerController@redirect')->name('shortener.url');

@@ -12,11 +12,16 @@ class ShortenerController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->has('short')) {
+        if ($request->has('url')) {
             return $this->encode($request);
         } else {
-            return view('index');
+            return view('shortener');
         }
+    }
+
+    public function example()
+    {
+        return view('example');
     }
 
     public function redirect($url)
@@ -55,16 +60,16 @@ class ShortenerController extends Controller
     {
         $validator = Validator::make(
             $request->all(),
-            ['short' => 'required|active_url|max:255'],
+            ['url' => 'required|active_url|max:255'],
             [],
-            ['short' => 'input']
+            ['url' => 'input']
         );
 
         if ($validator->fails()) {
             return $validator->errors();
         }
 
-        $url = $request->input('short');
+        $url = $request->input('url');
 
         $shortener = Shortener::where('url', $url)->first();
 
