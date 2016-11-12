@@ -38,7 +38,7 @@ composer install
 
 Install NodeJS dependencies:
 ```
-yarn global add gulp-cli
+npm install --global gulp-cli
 yarn --pure-lockfile
 ```
 
