@@ -58,6 +58,14 @@ class ShortenerController extends Controller
 
     private function encode(Request $request)
     {
+        $token = $request->input('token', '');
+
+        $shorten_secret = config('services.shorten.secret');
+
+        if ($shorten_secret != '' && $token != $shorten_secret) {
+            return 'Invalid token.';
+        }
+
         $validator = Validator::make(
             $request->all(),
             ['url' => 'required|active_url|max:255'],
