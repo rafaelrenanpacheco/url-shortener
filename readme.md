@@ -17,7 +17,7 @@ https://mysite.com/shorten?url=https://www.google.com.br
 
 **Or using the URL Shortener /shorten page:**
 
-!["URL Shortener"] (https://cloud.githubusercontent.com/assets/12160864/19749104/072d5f96-9bc5-11e6-8922-23bbc7052db5.png "URL Shortener")
+!["URL Shortener"](https://cloud.githubusercontent.com/assets/12160864/19749104/072d5f96-9bc5-11e6-8922-23bbc7052db5.png)
 
 ## And how to install this wonderfull shortener?
 
